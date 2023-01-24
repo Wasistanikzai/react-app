@@ -1,28 +1,14 @@
-import * as React from 'react'
-
-//const Lists =['Ahmad','Aziz','Wasi'];
-
-const list = [
-  {id:1,title:"Assignment 1"},
-  {id:2,title:"Assignment 2"},
-  {id:3,title:"Assignment 3"},
-];
-function App() {
+import React from 'react';
+import TodoList from './TodoList';
+import AddTodoForm from './AddTodoForm';
+function App(){
     return (
-      <div>
-      <h1>TodoList</h1>
-      <ul>
-        {/* {list.map((index) => {
-                <li id={index.id}> {index.title} </li>
-                })} */}
-        {list.map(function(l){
-          return <li key={l.id}>{l.title}</li>
-        })}
-      </ul>
-      </div>
-    );
+        <div>
+            <h1>Todo List</h1>
+            <TodoList />
+            <AddTodoForm />
+        </div>
+    )
 }
-
-
 
 export default App;
