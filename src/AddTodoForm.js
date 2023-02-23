@@ -1,31 +1,40 @@
-import React, { useState } from "react"
+import React, { useState } from 'react';
+import InputWithLabel from './InputWithLabel';
+const AddTodoForm=({onAddTodo})=>{
 
-function AddTodoForm(AddTodoForm) {
-  const [todoTitle, setTodoTitle] = useState()
+// State
+const [todoTitle, setTodoTitle] = useState(); 
 
-function handleTitleChange(event){
-  let newTodoTitle=event.target.value;
-  console.log(event.target.value)
-  setTodoTitle(newTodoTitle);
-
-
+const handleTitleChange=(e)=>{
+     
+    const newTodoTitle=e.target.value;   
+     setTodoTitle(newTodoTitle);
+     console.log(todoTitle);
 }
-  function handleAddTodo(event) {
-    event.preventDefault()
 
-    // let todoTitle = event.target.title.value
-    // event.target.title.value = ""
-    console.log(todoTitle)
-    AddTodoForm.onAddTodo({title:todoTitle,id:Date.now()})  
-    setTodoTitle("")
-  }
-  return (
+const handleAddTodo=(e)=>{
+    e.preventDefault();
+    const todoObj={
+        id:Date.now(),
+        title:todoTitle
+    };
+    onAddTodo(todoObj);
+    setTodoTitle("");
+}
+
+ return (
     <form onSubmit={handleAddTodo}>
-      <label htmlFor="todoTitle"> Title</label>
-      <input type="text" id="todoTitle" value={todoTitle} name="title" onChange={handleTitleChange} />
-      <button type="submit">Add</button>
+      {/* called component of input */}
+        <InputWithLabel
+            id="search" 
+            name="Search"
+            placeholder="Search here ... "
+            inputValue={todoTitle}
+            onInputChange={handleTitleChange}
+        ><b>Title </b></InputWithLabel>
+         
+        <button type="submit">Add</button>
     </form>
-  )
+ )
 }
-
 export default AddTodoForm
