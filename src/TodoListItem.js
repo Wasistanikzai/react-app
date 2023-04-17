@@ -1,7 +1,14 @@
 import React from "react"
 
-function TodoListItem(TodoListItem) {
-  return <li key={TodoListItem.todo.id}>{TodoListItem.todo.title}</li>
+function TodoListItem({ todo, onRemoveTodo }) {
+  return (
+    <li key="{todo.id}">
+      {todo.fields.Title}
+      <button type="button" onClick={() => onRemoveTodo(todo.id)}>
+        Remove
+      </button>
+    </li>
+  )
 }
 
 export default TodoListItem
